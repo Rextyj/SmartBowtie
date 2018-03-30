@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84A29DA663D8E5B1DF506E3A /* Pods_SmartBowtie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9A12CBDD67C586E7F90903 /* Pods_SmartBowtie.framework */; };
+		CD6868A2206D56DA0096E5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868A1206D56DA0096E5AD /* AppDelegate.swift */; };
+		CD6868A7206D56DA0096E5AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6868A5206D56DA0096E5AD /* Main.storyboard */; };
+		CD6868A9206D56DA0096E5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6868A8206D56DA0096E5AD /* Assets.xcassets */; };
+		CD6868AC206D56DA0096E5AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6868AA206D56DA0096E5AD /* LaunchScreen.storyboard */; };
+		CD6868B4206D5CBE0096E5AD /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868B3206D5CBE0096E5AD /* SwipeTableViewController.swift */; };
+		CD6868B7206D61A00096E5AD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868B6206D61A00096E5AD /* CollectionViewController.swift */; };
+		CD6868BC206D62D50096E5AD /* Bowtie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868BB206D62D50096E5AD /* Bowtie.swift */; };
+		CD6868C4206D73000096E5AD /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868C3206D73000096E5AD /* CustomTableViewCell.swift */; };
+		CD6868C8206DA2310096E5AD /* ItemCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868C7206DA2310096E5AD /* ItemCreationViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		03F6657D8908E2EC2F680C8D /* Pods-SmartBowtie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBowtie.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartBowtie/Pods-SmartBowtie.release.xcconfig"; sourceTree = "<group>"; };
+		249C9A458027A2B6F4B1B617 /* Pods-SmartBowtie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBowtie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartBowtie/Pods-SmartBowtie.debug.xcconfig"; sourceTree = "<group>"; };
+		CD68689E206D56DA0096E5AD /* SmartBowtie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBowtie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD6868A1206D56DA0096E5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD6868A6206D56DA0096E5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD6868A8206D56DA0096E5AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD6868AB206D56DA0096E5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD6868AD206D56DA0096E5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD6868B3206D5CBE0096E5AD /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
+		CD6868B6206D61A00096E5AD /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		CD6868BB206D62D50096E5AD /* Bowtie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bowtie.swift; sourceTree = "<group>"; };
+		CD6868C3206D73000096E5AD /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		CD6868C7206DA2310096E5AD /* ItemCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreationViewController.swift; sourceTree = "<group>"; };
+		DD9A12CBDD67C586E7F90903 /* Pods_SmartBowtie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartBowtie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD68689B206D56DA0096E5AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A29DA663D8E5B1DF506E3A /* Pods_SmartBowtie.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1795D49B5CF74951BA893ABE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD9A12CBDD67C586E7F90903 /* Pods_SmartBowtie.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD686895206D56DA0096E5AD = {
+			isa = PBXGroup;
+			children = (
+				CD6868A0206D56DA0096E5AD /* SmartBowtie */,
+				CD68689F206D56DA0096E5AD /* Products */,
+				E52CF0230392B9A2178C7EE5 /* Pods */,
+				1795D49B5CF74951BA893ABE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD68689F206D56DA0096E5AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD68689E206D56DA0096E5AD /* SmartBowtie.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD6868A0206D56DA0096E5AD /* SmartBowtie */ = {
+			isa = PBXGroup;
+			children = (
+				CD6868A1206D56DA0096E5AD /* AppDelegate.swift */,
+				CD6868B8206D62600096E5AD /* Model */,
+				CD6868BD206D65AE0096E5AD /* View */,
+				CD6868B5206D615A0096E5AD /* Controllers */,
+				CD6868A8206D56DA0096E5AD /* Assets.xcassets */,
+				CD6868AA206D56DA0096E5AD /* LaunchScreen.storyboard */,
+				CD6868AD206D56DA0096E5AD /* Info.plist */,
+			);
+			path = SmartBowtie;
+			sourceTree = "<group>";
+		};
+		CD6868B5206D615A0096E5AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD6868B6206D61A00096E5AD /* CollectionViewController.swift */,
+				CD6868C7206DA2310096E5AD /* ItemCreationViewController.swift */,
+				CD6868B3206D5CBE0096E5AD /* SwipeTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CD6868B8206D62600096E5AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD6868BB206D62D50096E5AD /* Bowtie.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CD6868BD206D65AE0096E5AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD6868A5206D56DA0096E5AD /* Main.storyboard */,
+				CD6868C3206D73000096E5AD /* CustomTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E52CF0230392B9A2178C7EE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				249C9A458027A2B6F4B1B617 /* Pods-SmartBowtie.debug.xcconfig */,
+				03F6657D8908E2EC2F680C8D /* Pods-SmartBowtie.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD68689D206D56DA0096E5AD /* SmartBowtie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD6868B0206D56DA0096E5AD /* Build configuration list for PBXNativeTarget "SmartBowtie" */;
+			buildPhases = (
+				7E0515AE2D33F703D2B13B03 /* [CP] Check Pods Manifest.lock */,
+				CD68689A206D56DA0096E5AD /* Sources */,
+				CD68689B206D56DA0096E5AD /* Frameworks */,
+				CD68689C206D56DA0096E5AD /* Resources */,
+				D562A81E6B3803538C235B59 /* [CP] Embed Pods Frameworks */,
+				7C07F398AA1B1ECEB7B66B19 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartBowtie;
+			productName = SmartBowtie;
+			productReference = CD68689E206D56DA0096E5AD /* SmartBowtie.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD686896206D56DA0096E5AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Rex Yijie Tong";
+				TargetAttributes = {
+					CD68689D206D56DA0096E5AD = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CD686899206D56DA0096E5AD /* Build configuration list for PBXProject "SmartBowtie" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD686895206D56DA0096E5AD;
+			productRefGroup = CD68689F206D56DA0096E5AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD68689D206D56DA0096E5AD /* SmartBowtie */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD68689C206D56DA0096E5AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD6868AC206D56DA0096E5AD /* LaunchScreen.storyboard in Resources */,
+				CD6868A9206D56DA0096E5AD /* Assets.xcassets in Resources */,
+				CD6868A7206D56DA0096E5AD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7C07F398AA1B1ECEB7B66B19 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartBowtie/Pods-SmartBowtie-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E0515AE2D33F703D2B13B03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartBowtie-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D562A81E6B3803538C235B59 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SmartBowtie/Pods-SmartBowtie-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartBowtie/Pods-SmartBowtie-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD68689A206D56DA0096E5AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD6868B7206D61A00096E5AD /* CollectionViewController.swift in Sources */,
+				CD6868C4206D73000096E5AD /* CustomTableViewCell.swift in Sources */,
+				CD6868BC206D62D50096E5AD /* Bowtie.swift in Sources */,
+				CD6868B4206D5CBE0096E5AD /* SwipeTableViewController.swift in Sources */,
+				CD6868C8206DA2310096E5AD /* ItemCreationViewController.swift in Sources */,
+				CD6868A2206D56DA0096E5AD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CD6868A5206D56DA0096E5AD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD6868A6206D56DA0096E5AD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD6868AA206D56DA0096E5AD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD6868AB206D56DA0096E5AD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD6868AE206D56DA0096E5AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CD6868AF206D56DA0096E5AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD6868B1206D56DA0096E5AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 249C9A458027A2B6F4B1B617 /* Pods-SmartBowtie.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y9G34LX2ZF;
+				INFOPLIST_FILE = SmartBowtie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rextyj.SmartBowtie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD6868B2206D56DA0096E5AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03F6657D8908E2EC2F680C8D /* Pods-SmartBowtie.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y9G34LX2ZF;
+				INFOPLIST_FILE = SmartBowtie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rextyj.SmartBowtie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD686899206D56DA0096E5AD /* Build configuration list for PBXProject "SmartBowtie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD6868AE206D56DA0096E5AD /* Debug */,
+				CD6868AF206D56DA0096E5AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD6868B0206D56DA0096E5AD /* Build configuration list for PBXNativeTarget "SmartBowtie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD6868B1206D56DA0096E5AD /* Debug */,
+				CD6868B2206D56DA0096E5AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD686896206D56DA0096E5AD /* Project object */;
+}
