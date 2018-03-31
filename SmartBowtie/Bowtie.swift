@@ -16,4 +16,5 @@ class Bowtie : Object {
     @objc dynamic var pattern : String = "Not Set"
     @objc dynamic var comments : String = "Empty"
     
+//    @objc dynamic var thumbnailName : String =
 }

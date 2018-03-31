@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class CollectionViewController : SwipeTableViewController {
+    //auto-updating
     var bowtieContainer : Results<Bowtie>?
     
     let realm = try! Realm()
@@ -18,9 +19,15 @@ class CollectionViewController : SwipeTableViewController {
         super.viewDidLoad()
         tableView.delegate = self
         loadUserData()
+        
 //        tableView.rowHeight =
         //TODO: Register custom cell file
 //        tableView.register(UINib(nibName: "CustomTableViewCell", bundle : nil), forCellReuseIdentifier: "CustomBowtieCell")
+    }
+    
+    //refresh tableview after dismissing another view
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
     
     //MARK: - Table view data source
@@ -29,15 +36,16 @@ class CollectionViewController : SwipeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cellforrow called")
+//        print("cellforrow called")
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! CustomTableViewCell
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomTableViewCell
 
         if let currentBowtie = bowtieContainer?[indexPath.row] {
-            print("changing name")
+//            print("changing name")
             cell.bowtieName.text = currentBowtie.name
+//            cell.bowtieThumbnail.image = currentBowtie.
         } else {
-            print("no item")
+//            print("no item")
             cell.bowtieName.text = "Please add a new bowtie"
         }
         
@@ -112,6 +120,7 @@ class CollectionViewController : SwipeTableViewController {
     }
     
     func loadUserData() {
+        print("loaddata is called")
         bowtieContainer = realm.objects(Bowtie.self)
         
         tableView.reloadData()

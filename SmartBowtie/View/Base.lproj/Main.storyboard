@@ -179,7 +179,7 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7ih-6i-YRz">
                                                         <rect key="frame" x="8" y="214" width="343" height="204"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.jbhjcbkjsdhfhfsdhuifhasijfbhajfjkasfhjagjkasjkfgjsbakjfvagisbgcisdkjbchjwhfioCwghciosahjhadskfvsdahhcnjksa cajsdcawsklcdvshCHASJKDCFBDJKSABCHJDVCKJBSJKCBSkjcvhuhckwvCJKbw chjhwkDJKgjkcabszhfgukajfjkfklawelnflnfw</mutableString>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.jbhjcbkjsdhfhfsdhuifhasijfbhajfjkasfhjagjkasjkfgjsbakjfvagisbgcisdkjbchjwhfioCwghciosahjhadskfvsdahhcnjksa cajsdcawsklcdvshCHASJKDCFBDJKSABCHJDVCKJBSJKCBSkjcvhuhckwvCJKbw chjhwkDJKgjkcabszhfgukajfjkfklawelnflnfw</string>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
@@ -191,9 +191,13 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNj-ha-cnZ">
                                                         <rect key="frame" x="156" y="426" width="47" height="36"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                        <state key="normal" title="Save"/>
+                                                        <state key="normal" title="Save">
+                                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onSaveButtonClicked:" destination="Hwg-hD-qJv" eventType="touchUpInside" id="0Sg-5d-p9B"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -290,12 +294,11 @@
                         <outlet property="materialTextField" destination="7Tx-DS-9Uf" id="aMm-qc-Ev6"/>
                         <outlet property="nameTextField" destination="YCt-2H-a2O" id="62E-CH-qdv"/>
                         <outlet property="patternTextField" destination="xpa-Do-RpT" id="ocP-4K-UhH"/>
-                        <segue destination="YUc-Or-kyH" kind="show" identifier="goToCollection" id="EX9-eA-nAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJH-uc-D7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="-85"/>
+            <point key="canvasLocation" x="2570" y="28"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ykR-69-ROP">
@@ -318,6 +321,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Pyq-Mb-M4l" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2NS-wV-hrQ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -330,7 +334,4 @@
             <point key="canvasLocation" x="-160" y="132.23388305847078"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="hCF-6G-naY"/>
-    </inferredMetricsTieBreakers>
 </document>
