@@ -102,7 +102,7 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         newBowtie.material = materialTextField.text!
         newBowtie.pattern = patternTextField.text!
         newBowtie.comments = commentsTextField.text!
-        newBowtie.filePath = path.appendingPathComponent(nameTextField.text! + ".png")
+//        newBowtie.filePath = path.appendingPathComponent(nameTextField.text! + ".png")
         
         if let existingID = itemToEdit?.itemID {
             newBowtie.itemID = existingID
@@ -164,7 +164,7 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         let fileManager = FileManager.default
         
         //        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName + ".png")
-        let imagePath = itemToEdit!.filePath!
+        let imagePath = path.appendingPathComponent(imageName + ".png")
         
         //        let imagePath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(imageName)
         

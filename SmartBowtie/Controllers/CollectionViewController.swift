@@ -106,7 +106,7 @@ class CollectionViewController : SwipeTableViewController {
         print("loaddata is called")
         
         //sorting is very important! Otherwise, deleting will mess up the order of the data in the container!
-        bowtieContainer = realm.objects(Bowtie.self).sorted(byKeyPath: "dateAdded", ascending: true)
+        bowtieContainer = realm.objects(Bowtie.self).sorted(byKeyPath: "name", ascending: true)
         
 //        if bowtieContainer != nil {
 //            print("not nil")

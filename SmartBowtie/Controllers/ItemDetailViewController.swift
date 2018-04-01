@@ -11,6 +11,8 @@ import UIKit
 class ItemDetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    
+    let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
     var selectedItem : Bowtie? {
         didSet {
             print("item passed")
@@ -50,8 +52,7 @@ class ItemDetailViewController: UIViewController {
         //get image called
         let fileManager = FileManager.default
         
-//        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName + ".png")
-        let imagePath = selectedItem!.filePath!
+        let imagePath = path.appendingPathComponent(imageName + ".png")
         print(imagePath)
         
 //        let imagePath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(imageName)

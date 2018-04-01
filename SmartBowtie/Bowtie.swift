@@ -20,7 +20,8 @@ class Bowtie : Object {
     
     @objc dynamic var itemID = UUID().uuidString
     
-    @objc dynamic var filePath : String?
+    //need to get a new path everytime
+//    @objc dynamic var filePath : String?
     
     override static func primaryKey() -> String? {
         return "itemID"
