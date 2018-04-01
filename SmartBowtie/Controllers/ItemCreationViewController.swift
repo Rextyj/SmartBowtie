@@ -22,6 +22,10 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
     let realm = try! Realm()
     var imagePickerController : UIImagePickerController!
     
+    var itemToEdit : Bowtie?
+    
+    let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
+    
     enum savingError : Error {
         case errorSavingImageToPath
     }
@@ -29,7 +33,7 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let image = #imageLiteral(resourceName: "wallpaper-998234")
+        let image = #imageLiteral(resourceName: "image-placeholder")
 //        imageView.contentMode = UIViewContentMode.scaleAspectFill
 //        imageView.autoresizingMask = UIViewAutoresizing.flexibleBottomMargin
 //        imageView.clipsToBounds = true
@@ -48,10 +52,14 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         
         let keyboardDismissGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(keyboardDismissGestureRecognizer)
+        
+        if itemToEdit != nil {
+            displaySavedData()
+        }
     }
 
     @objc func imageTapped(tapGestureRecognizer : UITapGestureRecognizer) {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
+//        let tappedImage = tapGestureRecognizer.view as! UIImageView
         
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -74,6 +82,17 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         self.dismiss(animated: true, completion: nil)
     }
     
+    func displaySavedData() {
+        imageView.image = getImage(imageName: itemToEdit!.name)
+        nameTextField.text = itemToEdit?.name
+        colorTextField.text = itemToEdit?.color
+        materialTextField.text = itemToEdit?.material
+        patternTextField.text = itemToEdit?.pattern
+        commentsTextField.text = itemToEdit?.comments
+        
+    }
+    
+    
     @IBAction func onSaveButtonClicked(_ sender: Any) {
         let newBowtie = Bowtie()
         
@@ -83,6 +102,12 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         newBowtie.material = materialTextField.text!
         newBowtie.pattern = patternTextField.text!
         newBowtie.comments = commentsTextField.text!
+        newBowtie.filePath = path.appendingPathComponent(nameTextField.text! + ".png")
+        
+        if let existingID = itemToEdit?.itemID {
+            newBowtie.itemID = existingID
+        }
+        
         
         if newBowtie.name.count == 0 {
             print("name filed is not filled")
@@ -105,7 +130,7 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
             print("Saving now")
             try saveImage(imageName: bowtie.name)
             try realm.write {
-                realm.add(bowtie)
+                realm.add(bowtie, update: true)
             }
         } catch {
             print("Error saving data, \(error)")
@@ -117,17 +142,38 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
     func saveImage(imageName : String) throws {
         let fileManager = FileManager.default
         
-        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        let imagePath = path.appendingPathComponent(imageName + ".png")
+        print("the image path is " + imagePath)
         
         let image = imageView.image!
         
         //get the PNG data for this image
-        let data = UIImagePNGRepresentation(image)
+        
+        //Note we have to use JPEG representation here because PNG does not store orientation info
+        let data = UIImageJPEGRepresentation(image, 0.4)
         //store it in the document directory    fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
         let isSaved = fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
         
         if isSaved != true {
             throw savingError.errorSavingImageToPath
         }
+    }
+    
+    func getImage(imageName : String) -> UIImage? {
+        //get image called
+        let fileManager = FileManager.default
+        
+        //        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName + ".png")
+        let imagePath = itemToEdit!.filePath!
+        
+        //        let imagePath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(imageName)
+        
+        if fileManager.fileExists(atPath: imagePath) {
+            return UIImage(contentsOfFile: imagePath)
+        } else {
+            print("Error loading image")
+            return UIImage(named: "broken-image")
+        }
+        
     }
 }

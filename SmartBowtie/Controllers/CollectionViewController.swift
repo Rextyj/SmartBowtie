@@ -16,6 +16,7 @@ class CollectionViewController : SwipeTableViewController {
     let realm = try! Realm()
     
     override func viewDidLoad() {
+        print("view did load ")
         super.viewDidLoad()
         tableView.delegate = self
         loadUserData()
@@ -41,11 +42,10 @@ class CollectionViewController : SwipeTableViewController {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomTableViewCell
 
         if let currentBowtie = bowtieContainer?[indexPath.row] {
-//            print("changing name")
+//            print("changing name from \(cell.bowtieName.text) to \(currentBowtie.name)")
             cell.bowtieName.text = currentBowtie.name
 //            cell.bowtieThumbnail.image = currentBowtie.
         } else {
-//            print("no item")
             cell.bowtieName.text = "Please add a new bowtie"
         }
         
@@ -56,6 +56,7 @@ class CollectionViewController : SwipeTableViewController {
         if let currentBowtie = self.bowtieContainer?[indexPath.row] {
             do {
                 try self.realm.write {
+//                    print("attempt to delete at row \(indexPath.row) the name is \(currentBowtie.name)")
                     self.realm.delete(currentBowtie)
                 }
             } catch {
@@ -68,42 +69,24 @@ class CollectionViewController : SwipeTableViewController {
     
     //MARK: -  table view delegate methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "goToItemCreation", sender: self)
+        performSegue(withIdentifier: "goToItemDetail", sender: self)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destinationVC = segue.destination as! ItemCreationViewController
-//
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            destinationVC = indexPath
-//        }
-//    }
+    //pass in the info about selected bowtie
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToItemDetail" {
+            let connectingVC = segue.destination as! UINavigationController
+            let destinationVC = connectingVC.topViewController as! ItemDetailViewController
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedItem = bowtieContainer?[indexPath.row]
+            }
+        }
+        
+    }
     
     
     @IBAction func addButtonPressed(_ sender: Any) {
-//        let alert = UIAlertController(title: "Add A New Bowtiew", message: "", preferredStyle: .alert)
-//
-//        alert.addTextField { (alertTextField) in
-//            alertTextField.placeholder = "New Bowtie Name"
-//        }
-//
-//        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-//
-//            if let bowtieName = alert.textFields![0].text {
-//                //create a new category object
-//                let newBowtie = Bowtie()
-//                newBowtie.name = bowtieName
-//
-//                //                self.categoryArray.append(newCategory)
-//                self.save(bowtie: newBowtie)
-//            }
-//
-//            self.tableView.reloadData()
-//        }
-//
-//        alert.addAction(action)
-//        //this shows the alert over the current view
-//        present(alert, animated: true, completion: nil)
          performSegue(withIdentifier: "goToItemCreation", sender: self)
     }
     
@@ -121,7 +104,14 @@ class CollectionViewController : SwipeTableViewController {
     
     func loadUserData() {
         print("loaddata is called")
-        bowtieContainer = realm.objects(Bowtie.self)
+        
+        //sorting is very important! Otherwise, deleting will mess up the order of the data in the container!
+        bowtieContainer = realm.objects(Bowtie.self).sorted(byKeyPath: "dateAdded", ascending: true)
+        
+//        if bowtieContainer != nil {
+//            print("not nil")
+//            bowtieContainer = bowtieContainer?.sorted(byKeyPath: "dateAdded", ascending: true)
+//        }
         
         tableView.reloadData()
     }

@@ -16,5 +16,15 @@ class Bowtie : Object {
     @objc dynamic var pattern : String = "Not Set"
     @objc dynamic var comments : String = "Empty"
     
+    @objc dynamic var dateAdded : Date = Date()
+    
+    @objc dynamic var itemID = UUID().uuidString
+    
+    @objc dynamic var filePath : String?
+    
+    override static func primaryKey() -> String? {
+        return "itemID"
+    }
+    
 //    @objc dynamic var thumbnailName : String =
 }

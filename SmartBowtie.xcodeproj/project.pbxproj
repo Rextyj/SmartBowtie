@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84A29DA663D8E5B1DF506E3A /* Pods_SmartBowtie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9A12CBDD67C586E7F90903 /* Pods_SmartBowtie.framework */; };
+		CD1386EC207037AC0050CADE /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1386EB207037AC0050CADE /* ItemDetailViewController.swift */; };
 		CD6868A2206D56DA0096E5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868A1206D56DA0096E5AD /* AppDelegate.swift */; };
 		CD6868A7206D56DA0096E5AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6868A5206D56DA0096E5AD /* Main.storyboard */; };
 		CD6868A9206D56DA0096E5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6868A8206D56DA0096E5AD /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		03F6657D8908E2EC2F680C8D /* Pods-SmartBowtie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBowtie.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartBowtie/Pods-SmartBowtie.release.xcconfig"; sourceTree = "<group>"; };
 		249C9A458027A2B6F4B1B617 /* Pods-SmartBowtie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBowtie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartBowtie/Pods-SmartBowtie.debug.xcconfig"; sourceTree = "<group>"; };
+		CD1386EB207037AC0050CADE /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		CD68689E206D56DA0096E5AD /* SmartBowtie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBowtie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6868A1206D56DA0096E5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD6868A6206D56DA0096E5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				CD6868B6206D61A00096E5AD /* CollectionViewController.swift */,
 				CD6868C7206DA2310096E5AD /* ItemCreationViewController.swift */,
+				CD1386EB207037AC0050CADE /* ItemDetailViewController.swift */,
 				CD6868B3206D5CBE0096E5AD /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6868B7206D61A00096E5AD /* CollectionViewController.swift in Sources */,
+				CD1386EC207037AC0050CADE /* ItemDetailViewController.swift in Sources */,
 				CD6868C4206D73000096E5AD /* CustomTableViewCell.swift in Sources */,
 				CD6868BC206D62D50096E5AD /* Bowtie.swift in Sources */,
 				CD6868B4206D5CBE0096E5AD /* SwipeTableViewController.swift in Sources */,
