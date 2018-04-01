@@ -15,9 +15,14 @@ class CollectionViewController : SwipeTableViewController {
     
     let realm = try! Realm()
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         print("view did load ")
         super.viewDidLoad()
+        searchBar.delegate = self
+        searchBar.scopeButtonTitles = ["Name", "Color", "Material", "Pattern"]
+        
         tableView.delegate = self
         loadUserData()
         
@@ -75,8 +80,8 @@ class CollectionViewController : SwipeTableViewController {
     //pass in the info about selected bowtie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToItemDetail" {
-            let connectingVC = segue.destination as! UINavigationController
-            let destinationVC = connectingVC.topViewController as! ItemDetailViewController
+            
+            let destinationVC = segue.destination as! ItemDetailViewController
             
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationVC.selectedItem = bowtieContainer?[indexPath.row]
@@ -115,7 +120,61 @@ class CollectionViewController : SwipeTableViewController {
         
         tableView.reloadData()
     }
+    
 }
-
+    extension CollectionViewController : UISearchBarDelegate {
+    
+    //MARK: - search bar delegate methods
+    
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let scopeIndex = searchBar.selectedScopeButtonIndex
+            switch scopeIndex {
+            case 0 :
+                bowtieContainer =  bowtieContainer?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+            case 1:
+                bowtieContainer =  bowtieContainer?.filter("color CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+            case 2:
+                bowtieContainer =  bowtieContainer?.filter("material CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+            case 3:
+                bowtieContainer =  bowtieContainer?.filter("pattern CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+            default:
+                print("error")
+            }
+//        bowtieContainer =  bowtieContainer?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+//        bowtieContainer =  bowtieContainer?.filter(predicate)
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        print("textdidbeginediting")
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.showsScopeBar = true
+        searchBar.sizeToFit()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.showsScopeBar = false
+        searchBar.sizeToFit()
+        view.endEditing(true)
+    }
+    
+//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+//        print(searchBar.scopeButtonTitles![selectedScope])
+////        let predicate = NSPredicate(format: "%@ CONTAINS[cd] %@", searchBar.scopeButtonTitles![selectedScope].lowercased(), searchBar.text!)
+////        searchBarSearchButtonClicked(searchBar, predicate: predicate)
+//    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadUserData()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+    
+}
 
 

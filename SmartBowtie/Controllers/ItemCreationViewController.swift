@@ -120,7 +120,8 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         } else {
             let isSaved = save(bowtie: newBowtie)
             if isSaved {
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: true)
+                
             }
         }
     }
