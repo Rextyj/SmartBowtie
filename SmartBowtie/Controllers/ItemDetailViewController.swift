@@ -12,6 +12,13 @@ class ItemDetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var nameField: UILabel!
+    @IBOutlet weak var colorField: UILabel!
+    @IBOutlet weak var materialField: UILabel!
+    @IBOutlet weak var patternField: UILabel!
+    @IBOutlet weak var commentField: UITextView!
+    
+    
     let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
     var selectedItem : Bowtie? {
         didSet {
@@ -70,6 +77,12 @@ class ItemDetailViewController: UIViewController {
         if let currentItem = selectedItem {
             print("this item has name" + currentItem.name)
             imageView.image = getImage(imageName: currentItem.name)
+            
+            nameField.text = currentItem.name
+            colorField.text = currentItem.color
+            materialField.text = currentItem.material
+            patternField.text = currentItem.pattern
+            commentField.text = currentItem.comments
         }
     }
     
