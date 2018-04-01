@@ -128,18 +128,23 @@ class CollectionViewController : SwipeTableViewController {
     
         func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let scopeIndex = searchBar.selectedScopeButtonIndex
-            switch scopeIndex {
-            case 0 :
-                bowtieContainer =  bowtieContainer?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-            case 1:
-                bowtieContainer =  bowtieContainer?.filter("color CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-            case 2:
-                bowtieContainer =  bowtieContainer?.filter("material CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-            case 3:
-                bowtieContainer =  bowtieContainer?.filter("pattern CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-            default:
-                print("error")
-            }
+        let searchScope = searchBar.scopeButtonTitles![scopeIndex].lowercased()
+//            switch scopeIndex {
+//            case 0 :
+//                bowtieContainer =  bowtieContainer?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+//            case 1:
+//                bowtieContainer =  bowtieContainer?.filter("color CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+//            case 2:
+//                bowtieContainer =  bowtieContainer?.filter("material CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+//            case 3:
+//                bowtieContainer =  bowtieContainer?.filter("pattern CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+//            default:
+//                print("error")
+//            }
+        
+        //key in the predicate is specified with %k not %@
+        bowtieContainer =  bowtieContainer?.filter("%K CONTAINS[cd] %@", searchScope, searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+            
 //        bowtieContainer =  bowtieContainer?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
 //        bowtieContainer =  bowtieContainer?.filter(predicate)
         self.tableView.reloadData()
