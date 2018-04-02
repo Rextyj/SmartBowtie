@@ -15,6 +15,8 @@ class CollectionViewController : SwipeTableViewController {
     
     let realm = try! Realm()
     
+    let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("images")
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -49,7 +51,7 @@ class CollectionViewController : SwipeTableViewController {
         if let currentBowtie = bowtieContainer?[indexPath.row] {
 //            print("changing name from \(cell.bowtieName.text) to \(currentBowtie.name)")
             cell.bowtieName.text = currentBowtie.name
-//            cell.bowtieThumbnail.image = currentBowtie.
+            cell.bowtieThumbnail.image = getImage(imageName: currentBowtie.name)
         } else {
             cell.bowtieName.text = "Please add a new bowtie"
         }
@@ -121,26 +123,35 @@ class CollectionViewController : SwipeTableViewController {
         tableView.reloadData()
     }
     
-}
-    extension CollectionViewController : UISearchBarDelegate {
+    func getImage(imageName : String) -> UIImage? {
+        //get image called
+        let fileManager = FileManager.default
+        
+        //        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName + ".png")
+        let imagePath = path?.appendingPathComponent(imageName + ".png")
+        
+        //        let imagePath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(imageName)
+
+        do {
+            _  = try imagePath?.checkResourceIsReachable()
+            return UIImage(contentsOfFile: (imagePath?.path)!)
+        } catch {
+            print("error reaching url")
+            return UIImage(named: "broken-image")
+        }
+    }
     
-    //MARK: - search bar delegate methods
+}
+
+
+
+extension CollectionViewController : UISearchBarDelegate {
+    
+        //MARK: - search bar delegate methods
     
         func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let scopeIndex = searchBar.selectedScopeButtonIndex
         let searchScope = searchBar.scopeButtonTitles![scopeIndex].lowercased()
-//            switch scopeIndex {
-//            case 0 :
-//                bowtieContainer =  bowtieContainer?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-//            case 1:
-//                bowtieContainer =  bowtieContainer?.filter("color CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-//            case 2:
-//                bowtieContainer =  bowtieContainer?.filter("material CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-//            case 3:
-//                bowtieContainer =  bowtieContainer?.filter("pattern CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-//            default:
-//                print("error")
-//            }
         
         //key in the predicate is specified with %k not %@
         bowtieContainer =  bowtieContainer?.filter("%K CONTAINS[cd] %@", searchScope, searchBar.text!).sorted(byKeyPath: "name", ascending: true)

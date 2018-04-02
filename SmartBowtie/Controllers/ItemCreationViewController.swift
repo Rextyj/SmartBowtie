@@ -63,8 +63,22 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        imagePickerController.sourceType = .camera
-        present(imagePickerController, animated: true, completion: nil)
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            self.imagePickerController.sourceType = .camera
+            self.present(self.imagePickerController, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Photo libaray", style: .default, handler: { (action) in
+            self.imagePickerController.sourceType = .photoLibrary
+            self.present(self.imagePickerController, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
         
     }
     
@@ -72,15 +86,20 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         view.endEditing(true)
     }
     
+    //MARK: - image picker methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imagePickerController.dismiss(animated: true, completion: nil)
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
-    @IBAction func onCancelPressed(_ sender: Any) {
-        //don't perform a segue
-        self.dismiss(animated: true, completion: nil)
-    }
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//
+//    }
+    
+//    @IBAction func onCancelPressed(_ sender: Any) {
+//        //don't perform a segue
+//        self.dismiss(animated: true, completion: nil)
+//    }
     
     func displaySavedData() {
         imageView.image = getImage(imageName: itemToEdit!.name)
@@ -188,3 +207,4 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
 }
+
