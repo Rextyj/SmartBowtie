@@ -320,7 +320,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N30-Cq-xaH">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fXm-od-DhX">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fXm-od-DhX">
                                         <rect key="frame" x="8" y="8" width="210" height="280"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -476,6 +476,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Pp6-a9-XPH"/>
+        <segue reference="IPK-Na-VnI"/>
     </inferredMetricsTieBreakers>
 </document>

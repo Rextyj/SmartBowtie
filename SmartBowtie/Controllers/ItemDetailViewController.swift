@@ -19,7 +19,7 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var commentField: UITextView!
     
     
-    let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
+    let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("images")
     var selectedItem : Bowtie? {
         didSet {
             print("item passed")
@@ -36,6 +36,11 @@ class ItemDetailViewController: UIViewController {
         loadData()
     }
 
+    //reload contents after editing
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
+    }
+    
     @IBAction func editButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToItemEdit", sender: self)
     }
@@ -56,20 +61,19 @@ class ItemDetailViewController: UIViewController {
     }
     
     func getImage(imageName : String) -> UIImage? {
-        //get image called
-        let fileManager = FileManager.default
         
-        let imagePath = path.appendingPathComponent(imageName + ".png")
-        print(imagePath)
+        let imagePath = path?.appendingPathComponent(imageName + ".png")
+        print(imagePath?.absoluteString)
         
 //        let imagePath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(imageName)
-        
-        if fileManager.fileExists(atPath: imagePath) {
-            return UIImage(contentsOfFile: imagePath)
-        } else {
-            print("Error loading image")
+        do {
+            _  = try imagePath?.checkResourceIsReachable()
+            return UIImage(contentsOfFile: (imagePath?.path)!)
+        } catch {
+            print("error reaching url")
             return UIImage(named: "broken-image")
         }
+        
         
     }
     

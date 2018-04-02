@@ -161,6 +161,7 @@ class CollectionViewController : SwipeTableViewController {
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.showsScopeBar = false
         searchBar.sizeToFit()
+        tableView.reloadData()
         view.endEditing(true)
     }
     

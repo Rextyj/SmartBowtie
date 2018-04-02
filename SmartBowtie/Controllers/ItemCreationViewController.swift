@@ -24,7 +24,7 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
     
     var itemToEdit : Bowtie?
     
-    let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
+    let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("images")
     
     enum savingError : Error {
         case errorSavingImageToPath
@@ -143,8 +143,15 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
     func saveImage(imageName : String) throws {
         let fileManager = FileManager.default
         
-        let imagePath = path.appendingPathComponent(imageName + ".png")
-        print("the image path is " + imagePath)
+        do {
+            try fileManager.createDirectory(at: path!, withIntermediateDirectories: false, attributes: nil)
+        } catch {
+            print("folder already existed, \(error)")
+        }
+        
+        
+        let imagePath = path?.appendingPathComponent(imageName + ".png")
+        print("the image path is " + (imagePath?.absoluteString)!)
         
         let image = imageView.image!
         
@@ -153,11 +160,12 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         //Note we have to use JPEG representation here because PNG does not store orientation info
         let data = UIImageJPEGRepresentation(image, 0.4)
         //store it in the document directory    fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
-        let isSaved = fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
-        
-        if isSaved != true {
-            throw savingError.errorSavingImageToPath
+        do{
+            try data?.write(to: imagePath!)
+        } catch {
+            print("error saving image")
         }
+        
     }
     
     func getImage(imageName : String) -> UIImage? {
@@ -165,14 +173,16 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         let fileManager = FileManager.default
         
         //        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName + ".png")
-        let imagePath = path.appendingPathComponent(imageName + ".png")
+        let imagePath = path?.appendingPathComponent(imageName + ".png")
         
         //        let imagePath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(imageName)
         
-        if fileManager.fileExists(atPath: imagePath) {
-            return UIImage(contentsOfFile: imagePath)
-        } else {
-            print("Error loading image")
+        
+        do {
+            _  = try imagePath?.checkResourceIsReachable()
+            return UIImage(contentsOfFile: (imagePath?.path)!)
+        } catch {
+            print("error reaching url")
             return UIImage(named: "broken-image")
         }
         
