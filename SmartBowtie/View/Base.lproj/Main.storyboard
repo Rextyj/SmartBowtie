@@ -475,22 +475,116 @@
         <!--Random-->
         <scene sceneID="q88-Mf-Sf5">
             <objects>
-                <viewController id="9VW-n4-XXB" sceneMemberID="viewController">
+                <viewController id="9VW-n4-XXB" customClass="RandomItemViewController" customModule="SmartBowtie" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9MU-lr-FwE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="drQ-vw-DuT">
+                                <rect key="frame" x="0.0" y="8" width="375" height="544"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lBY-pL-MjG" userLabel="topstack">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H5i-ly-mYX" userLabel="NamePicker">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="239.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSw-e7-1MP">
+                                                        <rect key="frame" x="69.5" y="0.0" width="49" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwr-lz-sgf">
+                                                        <rect key="frame" x="0.0" y="23.5" width="187.5" height="216"/>
+                                                    </pickerView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sup-ui-l4b" userLabel="ColorPicker">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="239.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtd-lV-wcf">
+                                                        <rect key="frame" x="69.5" y="0.0" width="49" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Otl-5R-oxL">
+                                                        <rect key="frame" x="0.0" y="23.5" width="187.5" height="216"/>
+                                                    </pickerView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bIE-AJ-C64" userLabel="bottomStack">
+                                        <rect key="frame" x="0.0" y="272" width="375" height="272"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qmw-TG-SrF" userLabel="MaterialPicker">
+                                                <rect key="frame" x="0.0" y="16.5" width="187.5" height="239.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpO-L9-V1j">
+                                                        <rect key="frame" x="69.5" y="0.0" width="49" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44G-aW-7z8">
+                                                        <rect key="frame" x="0.0" y="23.5" width="187.5" height="216"/>
+                                                    </pickerView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3mw-Wi-ShB" userLabel="PatternPicker">
+                                                <rect key="frame" x="187.5" y="16.5" width="187.5" height="239.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVK-eB-afY">
+                                                        <rect key="frame" x="69.5" y="0.0" width="49" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNk-GG-Crm">
+                                                        <rect key="frame" x="0.0" y="23.5" width="187.5" height="216"/>
+                                                    </pickerView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-vV-af2">
+                                <rect key="frame" x="164" y="572" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="9VW-n4-XXB" eventType="touchUpInside" id="8Cm-nu-pbS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="drQ-vw-DuT" firstAttribute="top" secondItem="9MU-lr-FwE" secondAttribute="top" constant="8" id="EiE-a9-W69"/>
+                            <constraint firstItem="drQ-vw-DuT" firstAttribute="leading" secondItem="9MU-lr-FwE" secondAttribute="leading" id="JIE-5V-4Mi"/>
+                            <constraint firstItem="dsT-vV-af2" firstAttribute="top" secondItem="drQ-vw-DuT" secondAttribute="bottom" constant="20" id="PF3-6M-s7d"/>
+                            <constraint firstItem="dsT-vV-af2" firstAttribute="centerX" secondItem="9MU-lr-FwE" secondAttribute="centerX" id="PMD-ud-Jev"/>
+                            <constraint firstAttribute="trailing" secondItem="drQ-vw-DuT" secondAttribute="trailing" id="Qog-av-vFR"/>
+                            <constraint firstItem="ZCY-S9-2sI" firstAttribute="bottom" secondItem="dsT-vV-af2" secondAttribute="bottom" constant="16" id="mRN-Hb-qw8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZCY-S9-2sI"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Random" image="dice" id="iXS-nV-d4q"/>
+                    <tabBarItem key="tabBarItem" title="Random" image="icons8-dice-filled-25" id="iXS-nV-d4q"/>
+                    <connections>
+                        <outlet property="colorPickerView" destination="Otl-5R-oxL" id="vUJ-0k-Tg9"/>
+                        <outlet property="materialPickerView" destination="44G-aW-7z8" id="S1N-sA-C9Y"/>
+                        <outlet property="namePickerView" destination="xwr-lz-sgf" id="3jy-yQ-4cY"/>
+                        <outlet property="patternPickerView" destination="qNk-GG-Crm" id="LBw-Ch-TiF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJ7-4h-WQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="185" y="847"/>
+            <point key="canvasLocation" x="184.80000000000001" y="846.9265367316342"/>
         </scene>
     </scenes>
     <resources>
-        <image name="dice" width="50" height="50"/>
+        <image name="icons8-dice-filled-25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Pp6-a9-XPH"/>

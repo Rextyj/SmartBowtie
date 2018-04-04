@@ -63,7 +63,7 @@ class ItemDetailViewController: UIViewController {
     func getImage(imageName : String) -> UIImage? {
         
         let imagePath = path?.appendingPathComponent(imageName + ".png")
-        print(imagePath?.absoluteString)
+//        print(imagePath?.absoluteString)
         
 //        let imagePath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(imageName)
         do {

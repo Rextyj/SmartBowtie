@@ -17,16 +17,37 @@ class CollectionViewController : SwipeTableViewController {
     
     let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("images")
     
+    var attributesDict : Results<AttributeTitle>?
+    let keyArray = ["name", "color", "material", "pattern"]
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         print("view did load ")
         super.viewDidLoad()
         searchBar.delegate = self
-        searchBar.scopeButtonTitles = ["Name", "Color", "Material", "Pattern"]
+        searchBar.scopeButtonTitles = keyArray
         
         tableView.delegate = self
+        tableView.rowHeight = 100
         loadUserData()
+        
+        
+        if realm.objects(AttributeTitle.self).count == 4 {
+            return
+        } else {
+            for keyName in keyArray {
+                do {
+                    try realm.write {
+                        let attributeToAdd = AttributeTitle()
+                        attributeToAdd.name = keyName
+                        realm.add(attributeToAdd)
+                    }
+                } catch {
+                    print("error writing to realm")
+                }
+            }
+        }
         
 //        tableView.rowHeight =
         //TODO: Register custom cell file
@@ -98,34 +119,35 @@ class CollectionViewController : SwipeTableViewController {
     }
     
     //MARK: - Data manipulation
-    func save(bowtie : Bowtie) {
-        do {
-            print("Saving now")
-            try realm.write {
-                realm.add(bowtie)
-            }
-        } catch {
-            print("Error saving data")
-        }
-    }
+//    func save(bowtie : Bowtie) {
+//        do {
+//            print("Saving now")
+//            try realm.write {
+//                realm.add(bowtie)
+//                realm.add(attributesDict!)
+//            }
+//        } catch {
+//            print("Error saving data")
+//        }
+//    }
     
     func loadUserData() {
         print("loaddata is called")
         
         //sorting is very important! Otherwise, deleting will mess up the order of the data in the container!
         bowtieContainer = realm.objects(Bowtie.self).sorted(byKeyPath: "name", ascending: true)
-        
-//        if bowtieContainer != nil {
-//            print("not nil")
-//            bowtieContainer = bowtieContainer?.sorted(byKeyPath: "dateAdded", ascending: true)
+//        let retrivedDict = realm.objects(AttributeDictionary.self)
+//        if retrivedDict.count != 0 {
+//            attributesDict = retrivedDict
+//        } else {
+//            print("No saved dictionary")
 //        }
-        
         tableView.reloadData()
     }
     
     func getImage(imageName : String) -> UIImage? {
         //get image called
-        let fileManager = FileManager.default
+//        let fileManager = FileManager.default
         
         //        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName + ".png")
         let imagePath = path?.appendingPathComponent(imageName + ".png")
@@ -149,15 +171,15 @@ extension CollectionViewController : UISearchBarDelegate {
     
         //MARK: - search bar delegate methods
     
-        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let scopeIndex = searchBar.selectedScopeButtonIndex
         let searchScope = searchBar.scopeButtonTitles![scopeIndex].lowercased()
         
         //key in the predicate is specified with %k not %@
         bowtieContainer =  bowtieContainer?.filter("%K CONTAINS[cd] %@", searchScope, searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-            
-//        bowtieContainer =  bowtieContainer?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
-//        bowtieContainer =  bowtieContainer?.filter(predicate)
+        
+        //        bowtieContainer =  bowtieContainer?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
+        //        bowtieContainer =  bowtieContainer?.filter(predicate)
         self.tableView.reloadData()
     }
     

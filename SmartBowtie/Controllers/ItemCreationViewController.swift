@@ -23,6 +23,8 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
     var imagePickerController : UIImagePickerController!
     
     var itemToEdit : Bowtie?
+    var attributesContainer : Results<AttributeTitle>?
+     let keyArray = ["name", "color", "material", "pattern"]
     
     let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("images")
     
@@ -56,6 +58,7 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         if itemToEdit != nil {
             displaySavedData()
         }
+        loadAttributeDict()
     }
 
     @objc func imageTapped(tapGestureRecognizer : UITapGestureRecognizer) {
@@ -137,10 +140,12 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         } else {
+            
+            updateAttributes(newBowtie)
             let isSaved = save(bowtie: newBowtie)
+            
             if isSaved {
                 navigationController?.popViewController(animated: true)
-                
             }
         }
     }
@@ -151,6 +156,7 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
             try saveImage(imageName: bowtie.name)
             try realm.write {
                 realm.add(bowtie, update: true)
+//                realm.add(attributesContainer!, update: true)
             }
         } catch {
             print("Error saving data, \(error)")
@@ -187,9 +193,14 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     
+    func loadAttributeDict() {
+        attributesContainer = realm.objects(AttributeTitle.self)
+    }
+    
+    
     func getImage(imageName : String) -> UIImage? {
         //get image called
-        let fileManager = FileManager.default
+//        let fileManager = FileManager.default
         
         //        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName + ".png")
         let imagePath = path?.appendingPathComponent(imageName + ".png")
@@ -205,6 +216,36 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
             return UIImage(named: "broken-image")
         }
         
+    }
+    
+    func updateAttributes(_ newBowtie: Bowtie) {
+       
+        
+        for keyName in keyArray {
+            do {
+                try realm.write {
+                    let newAttribute = AttributeName()
+                    newAttribute.name = newBowtie.value(forKey: keyName) as! String
+                    print("creating new attribute \(keyName) with value \(newAttribute.name)")
+                    guard let attributes = attributesContainer?.filter("name CONTAINS[cd] %@", keyName).first?.attributes else {fatalError("error loading attrbutes")}
+                    
+                    if attributes.contains(newAttribute){
+                        print("attribute already exist")
+                    } else {
+                        attributes.append(newAttribute)
+                    }
+                }
+            } catch {
+                print("error writing to realm")
+            }
+            
+            
+        }
+//        attributesContainer?.filter("name == %@", )
+//        dictRef["name"]?.append(newBowtie.name)
+//        dictRef["color"]?.append(newBowtie.color)
+//        dictRef["material"]?.append(newBowtie.material)
+//        dictRef["pattern"]?.append(newBowtie.pattern)
     }
 }
 
