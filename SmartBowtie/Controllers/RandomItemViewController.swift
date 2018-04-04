@@ -25,7 +25,10 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var searchResult : Results<Bowtie>?
     
     //storing all attributes that has been entered
-    var attributesDict : [String : [String]] = ["name" : ["Any"], "color" : ["Any"], "material" : ["Any"], "pattern" : ["Any"]]
+//    var attributesDict : [String : [String]] = ["name" : ["Any"], "color" : ["Any"], "material" : ["Any"], "pattern" : ["Any"]]
+    
+    var attributeContainer : Results<AttributeTitle>?
+    
     let keyArray = ["name", "color", "material", "pattern"]
     
     var searchingScope : [String] = ["Any", "Any", "Any", "Any"]
@@ -45,56 +48,84 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        namePickerView.reloadAllComponents()
+        colorPickerView.reloadAllComponents()
+        materialPickerView.reloadAllComponents()
+        patternPickerView.reloadAllComponents()
+    }
+    
     //MARK: - pickerviewcontroller de;egate functions
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        guard let container = attributeContainer else {fatalError()}
         if pickerView == namePickerView {
-            //we can definetly find the key named name
-            return (attributesDict["name"]?.count)!
+            //the number of rows is +1 because we need one extra row for displaying "any"
+            return (container[2].attributes.count) + 1
         } else if pickerView == colorPickerView {
-            return (attributesDict["color"]?.count)!
+            return (container[0].attributes.count) + 1
         } else if pickerView == materialPickerView {
-            return (attributesDict["material"]?.count)!
+            return (container[1].attributes.count) + 1
         } else if pickerView == patternPickerView {
-            return (attributesDict["pattern"]?.count)!
+            return (container[3].attributes.count) + 1
         }
         return 1
     }
     
     //change the row text to corresponding value retrieved from the dictionary
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        
+        //we need the first row to be displaying any!
+        if row == 0 {
+            return "Any"
+        }
+        
         if pickerView == namePickerView {
             //we can definetly find the key named name
-            return (attributesDict["name"]?[row])!
+            return (attributeContainer?[2].attributes[row - 1].name)!
         } else if pickerView == colorPickerView {
-            return (attributesDict["color"]?[row])!
+            return (attributeContainer?[0].attributes[row - 1].name)!
         } else if pickerView == materialPickerView {
-            return (attributesDict["material"]?[row])!
+            return (attributeContainer?[1].attributes[row - 1].name)!
         } else if pickerView == patternPickerView {
-            return (attributesDict["pattern"]?[row])!
+            return (attributeContainer?[3].attributes[row - 1].name)!
         }
         return "Any"
     }
 
     //after selecting a row
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        searchingScope[component] = self.pickerView(self.namePickerView, titleForRow: row, forComponent: component)!
+        if pickerView == namePickerView {
+            searchingScope[0] = self.pickerView(self.namePickerView, titleForRow: row, forComponent: component)!
+        } else if pickerView == colorPickerView {
+            searchingScope[1] = self.pickerView(self.colorPickerView, titleForRow: row, forComponent: component)!
+        } else if pickerView == materialPickerView {
+            searchingScope[2] = self.pickerView(self.materialPickerView, titleForRow: row, forComponent: component)!
+        } else if pickerView == patternPickerView {
+            searchingScope[3] = self.pickerView(self.patternPickerView, titleForRow: row, forComponent: component)!
+        }
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
+        loadUserData()
+        print("container size \(itemContainter?.count)")
         var predicate : NSPredicate?
         var count = 0
+        var predicateArray = [NSPredicate]()
         for scopeName in searchingScope {
             if scopeName != "Any" {
                 let currentPredicate = NSPredicate(format: "%K CONTAINS[cd] %@", keyArray[count], scopeName)
-                if let previousPredicate = predicate {
-                     predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [previousPredicate, currentPredicate])
-                } else {
-                    predicate = currentPredicate
-                }
+                predicateArray.append(currentPredicate)
+//                if let previousPredicate = predicate {
+//                     predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [previousPredicate, currentPredicate])
+//                } else {
+//                    //if the predicate is nil the the currentPredicate is the first predicate
+//                    predicate = currentPredicate
+//                }
                
 //                if predicateString.count != 0 {
 //                    predicateString += " AND " + keyArray[count] + " CONTAINS[cd] " + scopeName
@@ -105,35 +136,45 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
             }
             count += 1
         }
+        print(predicateArray)
+        predicate = NSCompoundPredicate(type: .and, subpredicates: predicateArray)
 //        print(predicate!)
         //if the predicate is nil, then a random item is selected from the entire collection of items
         if predicate == nil {
             print("searching predicate is nil")
             searchResult = itemContainter
         } else {
+            print("the predicate is \(String(describing: predicate))")
             //seachResult can be nil, which means no item matches the criteria
             searchResult = itemContainter?.filter(predicate!)
+            print(searchResult?.count)
         }
         
-        if let numberOfEle = searchResult?.count {
-            //if there is no item in the container
-            if numberOfEle == 0 {
-                print("There is not item in the container")
-                
-                let alert = UIAlertController(title: "No item saved", message: "Please at least add one item before doing this", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    }))
-                present(alert, animated: true, completion: nil)
-                return
-            }
+        
+        //if there is no item in the container
+        if itemContainter?.count == 0 {
+            print("There is not item in the container")
             
+            let alert = UIAlertController(title: "No item saved", message: "Please at least add one item before doing this", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            }))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        //else
+        guard let numberOfEle = searchResult?.count else {fatalError()}
+        
+        
+        if numberOfEle != 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(numberOfEle)))
-
-            //
+            
+            
             let selectedItem = itemContainter![randomIndex]
         } else {
             print("No item matching specifying requirement")
         }
+        
+        
         
         
         print(searchResult?.count)
@@ -146,6 +187,7 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
         //sorting is very important! Otherwise, deleting will mess up the order of the data in the container!
         itemContainter = realm.objects(Bowtie.self).sorted(byKeyPath: "name", ascending: true)
+        attributeContainer = realm.objects(AttributeTitle.self).sorted(byKeyPath: "name", ascending: true)
 
     }
     

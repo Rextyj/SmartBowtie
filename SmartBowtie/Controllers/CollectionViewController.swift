@@ -17,7 +17,7 @@ class CollectionViewController : SwipeTableViewController {
     
     let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("images")
     
-    var attributesDict : Results<AttributeTitle>?
+    var attributeContainer : Results<AttributeTitle>?
     let keyArray = ["name", "color", "material", "pattern"]
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -82,17 +82,29 @@ class CollectionViewController : SwipeTableViewController {
     
     override func updateModel(at indexPath: IndexPath) {
         if let currentBowtie = self.bowtieContainer?[indexPath.row] {
+            
+            print("deleting attributes")
+            attributeContainer?[0].deleteAttributes(attribute: currentBowtie.color)
+            attributeContainer?[1].deleteAttributes(attribute: currentBowtie.material)
+            attributeContainer?[2].deleteAttributes(attribute: currentBowtie.name)
+            attributeContainer?[3].deleteAttributes(attribute: currentBowtie.pattern)
+            
+            
             do {
                 try self.realm.write {
 //                    print("attempt to delete at row \(indexPath.row) the name is \(currentBowtie.name)")
                     self.realm.delete(currentBowtie)
+                    
                 }
             } catch {
                 print("error deleteing")
             }
+            
+            
             //if we don't use options for row at, we need to reload the data
 //           tableView.reloadData()
         }
+        print("finish updating")
     }
     
     //MARK: -  table view delegate methods
@@ -136,6 +148,7 @@ class CollectionViewController : SwipeTableViewController {
         
         //sorting is very important! Otherwise, deleting will mess up the order of the data in the container!
         bowtieContainer = realm.objects(Bowtie.self).sorted(byKeyPath: "name", ascending: true)
+        attributeContainer = realm.objects(AttributeTitle.self).sorted(byKeyPath: "name", ascending: true)
 //        let retrivedDict = realm.objects(AttributeDictionary.self)
 //        if retrivedDict.count != 0 {
 //            attributesDict = retrivedDict

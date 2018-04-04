@@ -229,8 +229,12 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
                     print("creating new attribute \(keyName) with value \(newAttribute.name)")
                     guard let attributes = attributesContainer?.filter("name CONTAINS[cd] %@", keyName).first?.attributes else {fatalError("error loading attrbutes")}
                     
-                    if attributes.contains(newAttribute){
+                    let stored = attributes.filter("name ==[cd] %@", newAttribute.name)
+                    
+                    if stored.count != 0{
                         print("attribute already exist")
+                        //increase count by one if it already exists
+                        stored.first?.count += 1
                     } else {
                         attributes.append(newAttribute)
                     }
