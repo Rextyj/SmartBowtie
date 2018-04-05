@@ -22,7 +22,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Item Collection-->
         <scene sceneID="I8x-S1-DIP">
             <objects>
                 <tableViewController id="YUc-Or-kyH" customClass="CollectionViewController" customModule="SmartBowtie" sceneMemberID="viewController">
@@ -94,7 +94,7 @@
                             <outlet property="delegate" destination="YUc-Or-kyH" id="31e-2g-2dO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="cCp-h5-XoP">
+                    <navigationItem key="navigationItem" title="Item Collection" id="cCp-h5-XoP">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DkA-yW-tNQ">
                             <connections>
                                 <action selector="addButtonPressed:" destination="YUc-Or-kyH" id="CH3-Y3-Cab"/>
@@ -464,6 +464,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h9z-zX-ZpH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="YUc-Or-kyH" kind="relationship" relationship="rootViewController" id="Alj-82-H3f"/>
                     </connections>
@@ -475,106 +478,197 @@
         <!--Random-->
         <scene sceneID="q88-Mf-Sf5">
             <objects>
-                <viewController id="9VW-n4-XXB" customClass="RandomItemViewController" customModule="SmartBowtie" sceneMemberID="viewController">
+                <viewController id="9VW-n4-XXB" customClass="RandomItemViewController" customModule="SmartBowtie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9MU-lr-FwE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="drQ-vw-DuT">
-                                <rect key="frame" x="0.0" y="8" width="375" height="544"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="400"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lBY-pL-MjG" userLabel="topstack">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H5i-ly-mYX" userLabel="NamePicker">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="239.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H5i-ly-mYX" userLabel="NamePicker">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="200"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSw-e7-1MP">
-                                                        <rect key="frame" x="69.5" y="0.0" width="49" height="23.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSw-e7-1MP">
+                                                        <rect key="frame" x="67.5" y="0.0" width="53" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwr-lz-sgf">
-                                                        <rect key="frame" x="0.0" y="23.5" width="187.5" height="216"/>
+                                                        <rect key="frame" x="0.0" y="19.5" width="187.5" height="180.5"/>
                                                     </pickerView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sup-ui-l4b" userLabel="ColorPicker">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="239.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sup-ui-l4b" userLabel="ColorPicker">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="200"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtd-lV-wcf">
-                                                        <rect key="frame" x="69.5" y="0.0" width="49" height="23.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtd-lV-wcf">
+                                                        <rect key="frame" x="69.5" y="0.0" width="48.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Otl-5R-oxL">
-                                                        <rect key="frame" x="0.0" y="23.5" width="187.5" height="216"/>
+                                                        <rect key="frame" x="0.0" y="19.5" width="187.5" height="180.5"/>
                                                     </pickerView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bIE-AJ-C64" userLabel="bottomStack">
-                                        <rect key="frame" x="0.0" y="272" width="375" height="272"/>
+                                        <rect key="frame" x="0.0" y="200" width="375" height="200"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qmw-TG-SrF" userLabel="MaterialPicker">
-                                                <rect key="frame" x="0.0" y="16.5" width="187.5" height="239.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qmw-TG-SrF" userLabel="MaterialPicker">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="200"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpO-L9-V1j">
-                                                        <rect key="frame" x="69.5" y="0.0" width="49" height="23.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpO-L9-V1j">
+                                                        <rect key="frame" x="58" y="0.0" width="71.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44G-aW-7z8">
-                                                        <rect key="frame" x="0.0" y="23.5" width="187.5" height="216"/>
+                                                        <rect key="frame" x="0.0" y="19.5" width="187.5" height="180.5"/>
                                                     </pickerView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3mw-Wi-ShB" userLabel="PatternPicker">
-                                                <rect key="frame" x="187.5" y="16.5" width="187.5" height="239.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3mw-Wi-ShB" userLabel="PatternPicker">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="200"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVK-eB-afY">
-                                                        <rect key="frame" x="69.5" y="0.0" width="49" height="23.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pattern" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVK-eB-afY">
+                                                        <rect key="frame" x="61" y="0.0" width="65.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNk-GG-Crm">
-                                                        <rect key="frame" x="0.0" y="23.5" width="187.5" height="216"/>
+                                                        <rect key="frame" x="0.0" y="19.5" width="187.5" height="180.5"/>
                                                     </pickerView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="rWn-vy-6nW"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-vV-af2">
-                                <rect key="frame" x="164" y="572" width="46" height="30"/>
+                                <rect key="frame" x="164" y="543.5" width="46" height="58.5"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="9VW-n4-XXB" eventType="touchUpInside" id="8Cm-nu-pbS"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6z-u9-sIS">
+                                <rect key="frame" x="0.0" y="436" width="375" height="99.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8UR-p8-2Jc">
+                                        <rect key="frame" x="8" y="2" width="95" height="95"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="95" id="0up-mk-o2A"/>
+                                            <constraint firstAttribute="width" constant="95" id="B2o-EN-bUP"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wot-mw-XC7">
+                                        <rect key="frame" x="111" y="0.0" width="264" height="99.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ECv-Ta-NRk">
+                                                <rect key="frame" x="8" y="8" width="248" height="83.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8h7-MH-Qsa" userLabel="top">
+                                                        <rect key="frame" x="8" y="0.0" width="232" height="42"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePn-OU-MZw" userLabel="Name">
+                                                                <rect key="frame" x="0.0" y="10.5" width="116" height="21"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Au3-lE-ETn" userLabel="Color">
+                                                                <rect key="frame" x="116" y="10.5" width="116" height="21"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b3a-0L-Bhg" userLabel="bottom">
+                                                        <rect key="frame" x="8" y="42" width="232" height="41.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayN-dG-y35" userLabel="Material">
+                                                                <rect key="frame" x="0.0" y="10" width="116" height="21"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oov-WM-aAE" userLabel="Pattern">
+                                                                <rect key="frame" x="116" y="10" width="116" height="21"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="8h7-MH-Qsa" firstAttribute="leading" secondItem="ECv-Ta-NRk" secondAttribute="leading" constant="8" id="Lg3-ER-SHy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8h7-MH-Qsa" secondAttribute="trailing" constant="8" id="PuJ-xN-lV5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="b3a-0L-Bhg" secondAttribute="trailing" constant="8" id="TVe-aA-dYF"/>
+                                                    <constraint firstItem="b3a-0L-Bhg" firstAttribute="leading" secondItem="ECv-Ta-NRk" secondAttribute="leading" constant="8" id="hWP-C8-6yP"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ECv-Ta-NRk" firstAttribute="top" secondItem="wot-mw-XC7" secondAttribute="top" constant="8" id="05M-EQ-mxY"/>
+                                            <constraint firstItem="ECv-Ta-NRk" firstAttribute="leading" secondItem="wot-mw-XC7" secondAttribute="leading" constant="8" id="BxS-OD-IQG"/>
+                                            <constraint firstAttribute="bottom" secondItem="ECv-Ta-NRk" secondAttribute="bottom" constant="8" id="ZLZ-2j-E3i"/>
+                                            <constraint firstAttribute="trailing" secondItem="ECv-Ta-NRk" secondAttribute="trailing" constant="8" id="igl-Q4-oNF"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="wot-mw-XC7" firstAttribute="leading" secondItem="8UR-p8-2Jc" secondAttribute="trailing" constant="8" id="BDi-bK-1a9"/>
+                                    <constraint firstItem="wot-mw-XC7" firstAttribute="top" secondItem="Q6z-u9-sIS" secondAttribute="top" id="OyJ-3h-7Vj"/>
+                                    <constraint firstItem="8UR-p8-2Jc" firstAttribute="top" secondItem="Q6z-u9-sIS" secondAttribute="top" constant="2" id="QBn-MC-hOq"/>
+                                    <constraint firstAttribute="trailing" secondItem="wot-mw-XC7" secondAttribute="trailing" id="cSr-wD-9xV"/>
+                                    <constraint firstItem="8UR-p8-2Jc" firstAttribute="leading" secondItem="Q6z-u9-sIS" secondAttribute="leading" constant="8" id="fBV-Cn-zex"/>
+                                    <constraint firstAttribute="bottom" secondItem="8UR-p8-2Jc" secondAttribute="bottom" constant="2.5" id="niY-rZ-0g4"/>
+                                    <constraint firstAttribute="bottom" secondItem="wot-mw-XC7" secondAttribute="bottom" id="xf6-8F-a1v"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="drQ-vw-DuT" firstAttribute="top" secondItem="9MU-lr-FwE" secondAttribute="top" constant="8" id="EiE-a9-W69"/>
+                            <constraint firstItem="Q6z-u9-sIS" firstAttribute="leading" secondItem="ZCY-S9-2sI" secondAttribute="leading" id="4uU-hK-LPn"/>
+                            <constraint firstItem="Q6z-u9-sIS" firstAttribute="top" secondItem="drQ-vw-DuT" secondAttribute="bottom" constant="8" id="Aia-1o-gJE"/>
+                            <constraint firstItem="dsT-vV-af2" firstAttribute="top" secondItem="Q6z-u9-sIS" secondAttribute="bottom" constant="8" id="Blv-AI-VfK"/>
                             <constraint firstItem="drQ-vw-DuT" firstAttribute="leading" secondItem="9MU-lr-FwE" secondAttribute="leading" id="JIE-5V-4Mi"/>
-                            <constraint firstItem="dsT-vV-af2" firstAttribute="top" secondItem="drQ-vw-DuT" secondAttribute="bottom" constant="20" id="PF3-6M-s7d"/>
                             <constraint firstItem="dsT-vV-af2" firstAttribute="centerX" secondItem="9MU-lr-FwE" secondAttribute="centerX" id="PMD-ud-Jev"/>
+                            <constraint firstItem="ZCY-S9-2sI" firstAttribute="trailing" secondItem="Q6z-u9-sIS" secondAttribute="trailing" id="Phv-xy-9Er"/>
                             <constraint firstAttribute="trailing" secondItem="drQ-vw-DuT" secondAttribute="trailing" id="Qog-av-vFR"/>
+                            <constraint firstItem="drQ-vw-DuT" firstAttribute="top" secondItem="ZCY-S9-2sI" secondAttribute="top" constant="8" id="asR-Ao-cMZ"/>
                             <constraint firstItem="ZCY-S9-2sI" firstAttribute="bottom" secondItem="dsT-vV-af2" secondAttribute="bottom" constant="16" id="mRN-Hb-qw8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZCY-S9-2sI"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Random" image="icons8-dice-filled-25" id="iXS-nV-d4q"/>
                     <connections>
+                        <outlet property="colorLabel" destination="Au3-lE-ETn" id="JKT-ME-qws"/>
                         <outlet property="colorPickerView" destination="Otl-5R-oxL" id="vUJ-0k-Tg9"/>
+                        <outlet property="displayView" destination="Q6z-u9-sIS" id="wtl-wI-a53"/>
+                        <outlet property="itemImage" destination="8UR-p8-2Jc" id="isE-Qb-hKm"/>
+                        <outlet property="materialLabel" destination="ayN-dG-y35" id="D2b-Mg-FtW"/>
                         <outlet property="materialPickerView" destination="44G-aW-7z8" id="S1N-sA-C9Y"/>
+                        <outlet property="nameLabel" destination="ePn-OU-MZw" id="8g7-Ye-4DY"/>
                         <outlet property="namePickerView" destination="xwr-lz-sgf" id="3jy-yQ-4cY"/>
+                        <outlet property="patternLabel" destination="oov-WM-aAE" id="pUk-5T-jjm"/>
                         <outlet property="patternPickerView" destination="qNk-GG-Crm" id="LBw-Ch-TiF"/>
                     </connections>
                 </viewController>

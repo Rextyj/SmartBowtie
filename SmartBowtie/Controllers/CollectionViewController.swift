@@ -30,6 +30,7 @@ class CollectionViewController : SwipeTableViewController {
         
         tableView.delegate = self
         tableView.rowHeight = 100
+        
         loadUserData()
         
         

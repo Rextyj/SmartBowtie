@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
 
     @IBOutlet weak var namePickerView: UIPickerView!
@@ -17,13 +17,24 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var materialPickerView: UIPickerView!
     @IBOutlet weak var patternPickerView: UIPickerView!
     
+    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
+    @IBOutlet weak var materialLabel: UILabel!
+    @IBOutlet weak var patternLabel: UILabel!
+    
+    @IBOutlet weak var displayView: UIView!
+    
+    
     let realm = try! Realm()
     
     var itemContainter : Results<Bowtie>?
     
     //contains filtered items according to the searching scope
     var searchResult : Results<Bowtie>?
+    var selectedItem = Bowtie()
     
+    let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("images")
     //storing all attributes that has been entered
 //    var attributesDict : [String : [String]] = ["name" : ["Any"], "color" : ["Any"], "material" : ["Any"], "pattern" : ["Any"]]
     
@@ -32,6 +43,7 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
     let keyArray = ["name", "color", "material", "pattern"]
     
     var searchingScope : [String] = ["Any", "Any", "Any", "Any"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,10 +121,11 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
             searchingScope[3] = self.pickerView(self.patternPickerView, titleForRow: row, forComponent: component)!
         }
     }
-
+    
+    //MARK: - Button method
     @IBAction func buttonPressed(_ sender: UIButton) {
         loadUserData()
-        print("container size \(itemContainter?.count)")
+//        print("container size \(itemContainter?.count)")
         var predicate : NSPredicate?
         var count = 0
         var predicateArray = [NSPredicate]()
@@ -167,15 +180,27 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         if numberOfEle != 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(numberOfEle)))
+            print("randomIndex is \(randomIndex)")
             
+            selectedItem = searchResult![randomIndex]
+            print("searched item is \(String(describing: selectedItem))")
             
-            let selectedItem = itemContainter![randomIndex]
+            //unhide the view
+            displayView.isHidden = false
+            nameLabel.text = selectedItem.name
+            colorLabel.text = selectedItem.color
+            materialLabel.text = selectedItem.material
+            patternLabel.text = selectedItem.pattern
+            itemImage.image = getImage(imageName: selectedItem.name)
+            
         } else {
             print("No item matching specifying requirement")
+            //remember UI changes needs to be completed in the main thread!!!
+            DispatchQueue.main.async() {
+               self.displayView.isHidden = true
+            }
+            
         }
-        
-        
-        
         
         print(searchResult?.count)
         
@@ -191,4 +216,19 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
     }
     
+    func getImage(imageName : String) -> UIImage? {
+        let imagePath = path?.appendingPathComponent(imageName + ".png")
+        
+        do {
+            _  = try imagePath?.checkResourceIsReachable()
+            return UIImage(contentsOfFile: (imagePath?.path)!)
+        } catch {
+            print("error reaching url")
+            return UIImage(named: "broken-image")
+        }
+    }
+    
+    
 }
+
+
