@@ -56,6 +56,10 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
         patternPickerView.delegate = self
         patternPickerView.dataSource = self
         
+        //add a tapgesture recognizer
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(itemTapped(gestureRecognizer:)))
+        displayView.addGestureRecognizer(tapGestureRecognizer)
+        
         loadUserData()
         // Do any additional setup after loading the view.
     }
@@ -121,6 +125,21 @@ class RandomItemViewController: UIViewController, UIPickerViewDelegate, UIPicker
             searchingScope[3] = self.pickerView(self.patternPickerView, titleForRow: row, forComponent: component)!
         }
     }
+    
+    //MARK: - Tap gesture function
+    
+    @objc func itemTapped (gestureRecognizer : UITapGestureRecognizer) {
+        performSegue(withIdentifier: "showDetails", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            let destinationVC = segue.destination as! ItemDetailViewController
+            
+            destinationVC.selectedItem = selectedItem
+        }
+    }
+    
     
     //MARK: - Button method
     @IBAction func buttonPressed(_ sender: UIButton) {
