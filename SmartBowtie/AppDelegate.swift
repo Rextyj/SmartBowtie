@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Foundation
 import RealmSwift
+import ChameleonFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Error initialzing new realm, \(error)")
         }
         
+        UINavigationBar.appearance().barTintColor = FlatSkyBlue()
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : FlatWhite()]
+        //change button's color
+        UINavigationBar.appearance().tintColor = FlatWhite()
+        
+//        UITabBar.appearance().barTintColor = FlatSkyBlue()
+        UITabBar.appearance().tintColor = FlatSkyBlue()
         
         return true
     }

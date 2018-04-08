@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class ItemCreationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -18,6 +19,7 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var patternTextField: UITextField!
     @IBOutlet weak var commentsTextField: UITextView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var saveButtonView: UIView!
     
     let realm = try! Realm()
     var imagePickerController : UIImagePickerController!
@@ -46,14 +48,18 @@ class ItemCreationViewController: UIViewController, UIImagePickerControllerDeleg
 //        imageView.frame.size.width = image.size.width
 //        self.view.layoutIfNeeded()
         imageView.image = image
-        // Do any additional setup after loading the view.
         
+        //set up tag gesture recognizer for the image view
         let tapGestureRecognizerOnImage = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizerOnImage)
         
+        //set up keyboard dismissal gesture recognizer
         let keyboardDismissGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(keyboardDismissGestureRecognizer)
+        
+        //change button's background color
+        saveButtonView.backgroundColor = FlatSkyBlue()
         
         if itemToEdit != nil {
             displaySavedData()
