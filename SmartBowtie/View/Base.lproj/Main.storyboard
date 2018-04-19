@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pyq-Mb-M4l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pyq-Mb-M4l">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-            <string>HelveticaNeue-Bold</string>
-        </array>
-        <array key="HelveticaNeueLights.ttc">
-            <string>HelveticaNeue-Light</string>
-            <string>HelveticaNeue-Thin</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Item Collection-->
         <scene sceneID="I8x-S1-DIP">
@@ -329,10 +319,10 @@
             </objects>
             <point key="canvasLocation" x="2568.8000000000002" y="718.7406296851575"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="aLf-d4-3Ir">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Pyq-Mb-M4l" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Pyq-Mb-M4l" customClass="TabBarViewController" customModule="SmartBowtie" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2NS-wV-hrQ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -501,7 +491,7 @@
         <scene sceneID="s1X-ir-axk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qWv-SD-17f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LIS-ku-feK"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icons8-cloakroom-24" id="LIS-ku-feK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1AI-rR-bkh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -603,13 +593,6 @@
                                     <constraint firstAttribute="height" constant="350" id="rWn-vy-6nW"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-vV-af2">
-                                <rect key="frame" x="164" y="537.5" width="46" height="64.5"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="9VW-n4-XXB" eventType="touchUpInside" id="8Cm-nu-pbS"/>
-                                </connections>
-                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6z-u9-sIS">
                                 <rect key="frame" x="0.0" y="430" width="375" height="99.5"/>
                                 <subviews>
@@ -694,18 +677,46 @@
                                     <constraint firstAttribute="bottom" secondItem="wot-mw-XC7" secondAttribute="bottom" id="xf6-8F-a1v"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0D-7G-LVb">
+                                <rect key="frame" x="87" y="559" width="200" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-vV-af2">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Shuffle">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonPressed:" destination="9VW-n4-XXB" eventType="touchUpInside" id="8Cm-nu-pbS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dsT-vV-af2" firstAttribute="leading" secondItem="i0D-7G-LVb" secondAttribute="leading" id="5qb-uP-Vmt"/>
+                                    <constraint firstAttribute="trailing" secondItem="dsT-vV-af2" secondAttribute="trailing" id="AGm-Lf-r3M"/>
+                                    <constraint firstAttribute="bottom" secondItem="dsT-vV-af2" secondAttribute="bottom" id="FHD-zW-7R1"/>
+                                    <constraint firstAttribute="width" constant="200" id="GgL-pA-NaO"/>
+                                    <constraint firstItem="dsT-vV-af2" firstAttribute="top" secondItem="i0D-7G-LVb" secondAttribute="top" id="Xpu-iB-OdW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusRatio">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="i0D-7G-LVb" firstAttribute="centerX" secondItem="9MU-lr-FwE" secondAttribute="centerX" id="0yV-k8-w1g"/>
                             <constraint firstItem="Q6z-u9-sIS" firstAttribute="leading" secondItem="ZCY-S9-2sI" secondAttribute="leading" id="4uU-hK-LPn"/>
                             <constraint firstItem="Q6z-u9-sIS" firstAttribute="top" secondItem="drQ-vw-DuT" secondAttribute="bottom" constant="8" id="Aia-1o-gJE"/>
-                            <constraint firstItem="dsT-vV-af2" firstAttribute="top" secondItem="Q6z-u9-sIS" secondAttribute="bottom" constant="8" id="Blv-AI-VfK"/>
+                            <constraint firstItem="ZCY-S9-2sI" firstAttribute="bottom" secondItem="i0D-7G-LVb" secondAttribute="bottom" constant="19" id="CET-4G-2iC"/>
                             <constraint firstItem="drQ-vw-DuT" firstAttribute="leading" secondItem="9MU-lr-FwE" secondAttribute="leading" id="JIE-5V-4Mi"/>
-                            <constraint firstItem="dsT-vV-af2" firstAttribute="centerX" secondItem="9MU-lr-FwE" secondAttribute="centerX" id="PMD-ud-Jev"/>
+                            <constraint firstItem="i0D-7G-LVb" firstAttribute="top" secondItem="Q6z-u9-sIS" secondAttribute="bottom" constant="29.5" id="MFt-Bs-C8L"/>
                             <constraint firstItem="ZCY-S9-2sI" firstAttribute="trailing" secondItem="Q6z-u9-sIS" secondAttribute="trailing" id="Phv-xy-9Er"/>
                             <constraint firstAttribute="trailing" secondItem="drQ-vw-DuT" secondAttribute="trailing" id="Qog-av-vFR"/>
                             <constraint firstItem="drQ-vw-DuT" firstAttribute="top" secondItem="ZCY-S9-2sI" secondAttribute="top" constant="8" id="asR-Ao-cMZ"/>
-                            <constraint firstItem="ZCY-S9-2sI" firstAttribute="bottom" secondItem="dsT-vV-af2" secondAttribute="bottom" constant="16" id="mRN-Hb-qw8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZCY-S9-2sI"/>
                     </view>
@@ -749,10 +760,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-cloakroom-24" width="24" height="24"/>
         <image name="icons8-dice-filled-25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QbA-ZL-4lf"/>
+        <segue reference="chg-bq-P7H"/>
         <segue reference="Pp6-a9-XPH"/>
     </inferredMetricsTieBreakers>
 </document>

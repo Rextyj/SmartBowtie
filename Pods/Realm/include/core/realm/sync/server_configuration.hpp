@@ -48,8 +48,8 @@ struct Configuration {
     std::string ssl_certificate_path;
     std::string ssl_certificate_key_path;
     std::string dashboard_stats_endpoint = "localhost:28125";
-    uint_fast64_t drop_period_ms = sync::Server::default_drop_period_ms;
-    uint_fast64_t idle_timeout_ms = sync::Server::default_idle_timeout_ms;
+    uint_fast64_t drop_period_s = 60; // 1 minute
+    uint_fast64_t idle_timeout_s = 1800; // 30 minutes
     sync::Server::BackupMode backup_mode = sync::Server::BackupMode::Disabled;
     std::string master_address;
     std::string master_port;

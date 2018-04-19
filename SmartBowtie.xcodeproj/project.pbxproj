@@ -15,13 +15,15 @@
 		CD66EE7C207469F000E7AD0E /* AttributeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD66EE7B207469F000E7AD0E /* AttributeName.swift */; };
 		CD6868A2206D56DA0096E5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868A1206D56DA0096E5AD /* AppDelegate.swift */; };
 		CD6868A7206D56DA0096E5AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6868A5206D56DA0096E5AD /* Main.storyboard */; };
-		CD6868A9206D56DA0096E5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6868A8206D56DA0096E5AD /* Assets.xcassets */; };
 		CD6868AC206D56DA0096E5AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6868AA206D56DA0096E5AD /* LaunchScreen.storyboard */; };
 		CD6868B4206D5CBE0096E5AD /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868B3206D5CBE0096E5AD /* SwipeTableViewController.swift */; };
 		CD6868B7206D61A00096E5AD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868B6206D61A00096E5AD /* CollectionViewController.swift */; };
 		CD6868BC206D62D50096E5AD /* Bowtie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868BB206D62D50096E5AD /* Bowtie.swift */; };
 		CD6868C4206D73000096E5AD /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868C3206D73000096E5AD /* CustomTableViewCell.swift */; };
 		CD6868C8206DA2310096E5AD /* ItemCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6868C7206DA2310096E5AD /* ItemCreationViewController.swift */; };
+		CD86A07D207AF35B001AB5B6 /* TabBarTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86A07C207AF35B001AB5B6 /* TabBarTransitionAnimation.swift */; };
+		CD86A0A1207B0B34001AB5B6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86A0A0207B0B34001AB5B6 /* TabBarViewController.swift */; };
+		CDAE823C2089337D009C22D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDAE823B2089337D009C22D5 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +37,6 @@
 		CD68689E206D56DA0096E5AD /* SmartBowtie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBowtie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6868A1206D56DA0096E5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD6868A6206D56DA0096E5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CD6868A8206D56DA0096E5AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD6868AB206D56DA0096E5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD6868AD206D56DA0096E5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6868B3206D5CBE0096E5AD /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +44,9 @@
 		CD6868BB206D62D50096E5AD /* Bowtie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bowtie.swift; sourceTree = "<group>"; };
 		CD6868C3206D73000096E5AD /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CD6868C7206DA2310096E5AD /* ItemCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreationViewController.swift; sourceTree = "<group>"; };
+		CD86A07C207AF35B001AB5B6 /* TabBarTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTransitionAnimation.swift; sourceTree = "<group>"; };
+		CD86A0A0207B0B34001AB5B6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		CDAE823B2089337D009C22D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD9A12CBDD67C586E7F90903 /* Pods_SmartBowtie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartBowtie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				CD307D142076AFB100AE778C /* UIViewExtension.swift */,
+				CD86A07C207AF35B001AB5B6 /* TabBarTransitionAnimation.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -96,10 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				CD6868A1206D56DA0096E5AD /* AppDelegate.swift */,
+				CDAE823B2089337D009C22D5 /* Assets.xcassets */,
 				CD6868B8206D62600096E5AD /* Model */,
 				CD6868BD206D65AE0096E5AD /* View */,
 				CD6868B5206D615A0096E5AD /* Controllers */,
-				CD6868A8206D56DA0096E5AD /* Assets.xcassets */,
 				CD6868AA206D56DA0096E5AD /* LaunchScreen.storyboard */,
 				CD6868AD206D56DA0096E5AD /* Info.plist */,
 				CD307D162076AFB700AE778C /* SupportingFiles */,
@@ -115,6 +120,7 @@
 				CD1386EB207037AC0050CADE /* ItemDetailViewController.swift */,
 				CD66EE7720740B4A00E7AD0E /* RandomItemViewController.swift */,
 				CD6868B3206D5CBE0096E5AD /* SwipeTableViewController.swift */,
+				CD86A0A0207B0B34001AB5B6 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,7 +183,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Rex Yijie Tong";
 				TargetAttributes = {
 					CD68689D206D56DA0096E5AD = {
@@ -210,7 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6868AC206D56DA0096E5AD /* LaunchScreen.storyboard in Resources */,
-				CD6868A9206D56DA0096E5AD /* Assets.xcassets in Resources */,
+				CDAE823C2089337D009C22D5 /* Assets.xcassets in Resources */,
 				CD6868A7206D56DA0096E5AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,10 +293,12 @@
 				CD307D152076AFB100AE778C /* UIViewExtension.swift in Sources */,
 				CD1386EC207037AC0050CADE /* ItemDetailViewController.swift in Sources */,
 				CD6868C4206D73000096E5AD /* CustomTableViewCell.swift in Sources */,
+				CD86A07D207AF35B001AB5B6 /* TabBarTransitionAnimation.swift in Sources */,
 				CD6868BC206D62D50096E5AD /* Bowtie.swift in Sources */,
 				CD66EE7C207469F000E7AD0E /* AttributeName.swift in Sources */,
 				CD6868B4206D5CBE0096E5AD /* SwipeTableViewController.swift in Sources */,
 				CD6868C8206DA2310096E5AD /* ItemCreationViewController.swift in Sources */,
+				CD86A0A1207B0B34001AB5B6 /* TabBarViewController.swift in Sources */,
 				CD6868A2206D56DA0096E5AD /* AppDelegate.swift in Sources */,
 				CD66EE7A20745A6600E7AD0E /* AttributeTitle.swift in Sources */,
 			);
@@ -332,6 +340,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -339,6 +348,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -366,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -389,6 +399,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -396,6 +407,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -417,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -433,6 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y9G34LX2ZF;
 				INFOPLIST_FILE = SmartBowtie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rextyj.SmartBowtie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -449,6 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y9G34LX2ZF;
 				INFOPLIST_FILE = SmartBowtie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rextyj.SmartBowtie;
 				PRODUCT_NAME = "$(TARGET_NAME)";

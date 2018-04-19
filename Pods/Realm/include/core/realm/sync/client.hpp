@@ -60,10 +60,9 @@ public:
         testing
     };
 
-    static constexpr std::uint_fast64_t default_connect_timeout_ms        = 120000; //  2 minutes
     static constexpr std::uint_fast64_t default_connection_linger_time_ms =  30000; // 30 seconds
-    static constexpr std::uint_fast64_t default_ping_keepalive_period_ms  =  60000; //  1 minute
-    static constexpr std::uint_fast64_t default_pong_keepalive_timeout_ms = 120000; //  2 minutes
+    static constexpr std::uint_fast64_t default_ping_keepalive_period_ms  = 600000; // 10 minutes
+    static constexpr std::uint_fast64_t default_pong_keepalive_timeout_ms = 300000; //  5 minutes
     static constexpr std::uint_fast64_t default_pong_urgent_timeout_ms    =   5000; //  5 seconds
 
     struct Config {
@@ -109,12 +108,6 @@ public:
         ///
         /// \sa make_client_history(), TrivialChangesetCooker.
         std::shared_ptr<ClientHistory::ChangesetCooker> changeset_cooker;
-
-        /// The maximum number of milliseconds to allow for a connection to
-        /// become fully established. This includes the time to resolve the
-        /// network address, the TCP connect operation, the SSL handshake, and
-        /// the WebSocket handshake.
-        std::uint_fast64_t connect_timeout_ms = default_connect_timeout_ms;
 
         /// The number of milliseconds to keep a connection open after all
         /// sessions have been abandoned (or suspended by errors).
@@ -948,7 +941,6 @@ enum class Client::Error {
     pong_timeout                = 118, ///< Timeout on reception of PONG respone message
     bad_client_file_ident_salt  = 119, ///< Bad client file identifier salt (IDENT)
     bad_file_ident              = 120, ///< Bad file identifier (ALLOC)
-    connect_timeout             = 121, ///< Sync connection was not fully established in time
 };
 
 const std::error_category& client_error_category() noexcept;
